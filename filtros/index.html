@@ -1,0 +1,62 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <title>AngularJS Filters</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row" ng-controller="FiltersController">
+        <h2>Filters in AngularJS</h2>
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+              <input class="form-control" type="text" placeholder="Search Employed" ng-model="searchText">
+            </div>
+          </div>
+
+          <div class="panel-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    <a href="" ng-click="orderByExample('name')">Name</a>
+                    <span class="caret" style="cursor: pointer;" ng-click="orderByExample('-name')"></span>
+                  </th>
+                  <th>
+                    <a href="" ng-click="orderByExample('lastName')">Last Name</a>
+                    <span class="caret" style="cursor: pointer;" ng-click="orderByExample('-lastName')"></span>
+                  </th>
+                  <th>Mother Name</th>
+                  <th>First day</th>
+                  <th>Phone</th>
+                  <th>Salary</th>
+                  <th>Bonus</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="employed in employees | orderBy:selectedOrder | filter:searchText">
+                  <td>{{ employed.name | lowercase }}</td>
+                  <td>{{ employed.lastName | uppercase }}</td>
+                  <td>{{ employed.motherName }}</td>
+                  <td>{{ employed.firstDay | date:'H:mm a' }} de {{ employed.firstDay | date:'yyyy' }}</td>
+                  <td>{{ employed.phone }}</td>
+                  <td>{{ employed.salary | currency:"MXN" }}</td>
+                  <td>% {{ employed.bonus | number:2 }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.2.21/i18n/angular-locale_es-mx.js"></script>
+    <script src="filters.js"></script>
+  </body>
+</html>
