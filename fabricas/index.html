@@ -16,15 +16,22 @@
           <div class="form">
             <div class="form-group" ng-controller="ControllerOne">
               <label class="text-success" for="">Controller One</label>
-              <input type="text" class="form-control" ng-model="data.message">
+              <input type="text" class="form-control" ng-model="newMessage">
+              <button class="btn btn-primary" ng-click="nuevo()">Guardar</button>
               <h3>{{data.message}}</h3>
             </div>
 
             <div class="form-group" ng-controller="ControllerTwo">
               <label class="text-warning" for="">Controller Two</label>
-              <input type="text" class="form-control" ng-model="data.message">
+              <input type="text" class="form-control" ng-model="newMessage">
+              <button class="btn btn-warning" ng-click="nuevo()">Guardar</button>
               <h3>{{data.message}}</h3>
             </div>
+
+            <div ng-controller="ControllerThree">
+              <button class="btn btn-danger" ng-click="reset()">Mensaje Inicial</button>
+            </div>
+            
           </div>
         </div>
     </div>
