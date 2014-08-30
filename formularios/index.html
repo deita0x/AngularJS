@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="formApp">
+  <head>
+    <title>AngularJS Form</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1>AngularJS Form</h1>
+        <hr>
+        <div class="col-sm-8">
+          <!-- https://docs.angularjs.org/api/ng/type/form.FormController -->
+          <form class="form-horizontal" role="form" name="form">
+            <div class="form-group" ng-class="{'has-error': form.uName.$invalid, 'has-success': form.uName.$valid}">
+              <label for="name" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="Enter a name" name="uName" ng-model="user.name" required>
+              </div>
+            </div>
+
+            <div class="form-group" ng-class="{'has-error': form.uEmail.$invalid, 'has-success': form.uEmail.$valid}">
+              <label for="email" class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-6">
+                <input type="email" class="form-control" placeholder="Enter a valid e-mail" name="uEmail" ng-model="user.email"required>
+              </div>
+            </div>
+
+            <!-- https://code.angularjs.org/1.2.22/docs/api/ng/type/form.FormController -->
+            <div class="col-sm-offset-2 col-sm-10" ng-show="form.uEmail.$dirty && form.uEmail.$invalid">
+              <p class="text-danger" ng-show="form.uEmail.$error.required">Missing field</p>
+              <p class="text-danger" ng-show="form.uEmail.$error.email">Invalid e-mail</p>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-6">
+                <input type="checkbox" name="uAgree" ng-model="user.agree" required> Agree.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-6">
+                <button class="btn btn-default" ng-disabled="form.$invalid">Register</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+    <script src="form.js"></script>
+  </body>
+</html>
