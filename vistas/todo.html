@@ -1,0 +1,17 @@
+<h1>Todo App</h1>
+
+<span>{{ remaining() }} de {{ todos.length }}
+  [<a class="text-danger" href="" ng-click="remove()">Limpiar</a>]
+</span>
+
+<ul class="unstyled">
+  <li ng-repeat="todo in todos">
+    <input type="checkbox" ng-model="todo.done">
+    <span class="done-{{todo.done}}">{{ todo.text }}</span>
+  </li>
+</ul>
+
+<form ng-submit="addTodo()">
+  <input type="text" placeholder="Agregar nueva tarea" ng-model="todoText">
+  <button class="btn btn-primary" type="submit">Agregar</button>
+</form>

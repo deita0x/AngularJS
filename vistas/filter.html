@@ -1,0 +1,44 @@
+<h1>Filters in AngularJS</h1>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+      <input class="form-control" type="text" placeholder="Search Employed" ng-model="searchText">
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+            <a href="" ng-click="orderByExample('name')">Name</a>
+            <span class="caret" style="cursor: pointer;" ng-click="orderByExample('-name')"></span>
+          </th>
+          <th>
+            <a href="" ng-click="orderByExample('lastName')">Last Name</a>
+            <span class="caret" style="cursor: pointer;" ng-click="orderByExample('-lastName')"></span>
+          </th>
+          <th>Mother Name</th>
+          <th>First day</th>
+          <th>Phone</th>
+          <th>Salary</th>
+          <th>Bonus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="employed in employees | orderBy:selectedOrder | filter:searchText">
+          <td>{{ employed.name | lowercase }}</td>
+          <td>{{ employed.lastName | uppercase }}</td>
+          <td>{{ employed.motherName }}</td>
+          <td>{{ employed.firstDay | date:'H:mm a' }} de {{ employed.firstDay | date:'yyyy' }}</td>
+          <td>{{ employed.phone }}</td>
+          <td>{{ employed.salary | currency:"MXN" }}</td>
+          <td>% {{ employed.bonus | number:2 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
